@@ -1,3 +1,66 @@
 <h1>
   {{title}}
 </h1>
+<p-dataTable [value]="persons" [editable]="true"
+      [(selection)]="selectedRow" selectionMode="single"
+      [rowHover]="true" 
+      (onRowClick)="onRowClick($event)" 
+      (onEditInit)="onEditInit($event)"
+      (onEdit)="onEdit($event)"
+      (onEditComplete)="onEditComplete($event)">
+        <p-column styleClass="col-button"  [style]="{'width':'50px'}">
+            <ng-template pTemplate="header">
+                <button type="button" pButton  icon="fa-plus" (click)="addRow()"></button>
+            </ng-template>
+            <ng-template let-ri="rowIndex" let-myRow="rowData" pTemplate="body">
+                <button type="button" pButton (click)="deleteRow(myRow, ri)"
+                 class="ui-button-danger" icon="fa-trash">
+                </button>
+            </ng-template>
+        </p-column>        
+        <p-column  header="firstName" [editable]="true">
+              <ng-template let-pers="rowData" pTemplate="body">
+                    <p-autoComplete [(ngModel)]="pers.items" [suggestions]="result" 
+                          (completeMethod)="search($event)" field="firstName" appendTo="body"
+                          [inputStyle]="{'width':'400px'}" (onSelect)="getData($event)"
+                          [minLength]="1" placeholder="Введите имя">{{pers.firstName}}
+                    </p-autoComplete>
+              </ng-template>
+        </p-column>  
+        <p-column field="lastName" header="lastName" [editable]="true"></p-column>
+        <p-column field="age" header="age" [editable]="true"></p-column>
+</p-dataTable>
+<p-autoComplete [(ngModel)]="val" [suggestions]="result" 
+    (completeMethod)="search($event)" field="firstName" 
+    [inputStyle]="{'width':'155px'}" (onSelect)="getData($event)"
+     [minLength]="1" placeholder="Введите имя">
+        <ng-template let-pers pTemplate="item">
+            <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+                <div style="font-size:18px;float:right;margin:10px 10px 0 0">
+                  {{pers.firstName}} - {{pers.lastName}}
+                </div>
+            </div>
+        </ng-template>
+</p-autoComplete>    
+<span style="margin-left:20px">Value: {{val ? val.fullName||value : 'none'}}</span>
+<!--
+        <p-column  header="firstName" [editable]="true">
+              <ng-template let-pers="rowData" pTemplate="body">
+                    <p-autoComplete [(ngModel)]="pers.items" [suggestions]="result" 
+                          (completeMethod)="search($event)" field="fullName" appendTo="body"
+                          [inputStyle]="{'width':'400px'}" (onSelect)="getData($event)"
+                          [minLength]="1" placeholder="Введите имя">{{pers.firstName}}
+                    </p-autoComplete>
+              </ng-template>
+        </p-column>    
+        <p-column styleClass="col-button"  [style]="{'width':'50px'}">
+            <ng-template pTemplate="header">
+                <button type="button" pButton  icon="fa-plus" (click)="addRow()"></button>
+            </ng-template>
+            <ng-template let-ri="rowIndex" let-myRow="rowData" pTemplate="body">
+                <button type="button" pButton (click)="deleteRow(myRow, ri)"
+                 class="ui-button-danger" icon="fa-trash">
+                </button>
+            </ng-template>
+        </p-column>  
+  -->

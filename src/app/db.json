@@ -1,0 +1,34 @@
+{
+  "persons": [
+    {
+      "firstName": "john",
+      "lastName": "bag",
+	    "age": 35,
+      "fullName": "john bag, age: 35"
+    },
+    {
+      "firstName": "bill",
+      "lastName": "alex",
+	    "age": 15,
+      "fullName": "bill alex, age: 15"
+    },
+    {
+      "firstName": "billy",
+      "lastName": "berd",
+	    "age": 20,
+      "fullName": "billy berd, age: 20"
+    },
+    {
+      "firstName": "jey",
+      "lastName": "yang",
+	    "age":15,
+      "fullName": "jey yang, age: 15"      
+    },
+    {
+      "firstName": "joshua",
+      "lastName": "gor",
+	    "age":22,
+      "fullName": "joshua gor, age: 22"        
+    }    
+  ]
+}
