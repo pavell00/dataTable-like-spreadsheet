@@ -2,12 +2,12 @@
   {{title}}
 </h1>
 <p-dataTable [value]="persons" [editable]="true"
-      [(selection)]="selectedRow" selectionMode="single"
+      [(selection)]="selectedRow" 
       [rowHover]="true" 
       (onRowClick)="onRowClick($event)" 
       (onEditInit)="onEditInit($event)"
       (onEdit)="onEdit($event)"
-      (onEditComplete)="onEditComplete($event)">
+      (onEditComplete)="dialog.onOpenDlg($event)">
         <p-column styleClass="col-button"  [style]="{'width':'50px'}">
             <ng-template pTemplate="header">
                 <button type="button" pButton  icon="fa-plus" (click)="addRow()"></button>
@@ -18,33 +18,9 @@
                 </button>
             </ng-template>
         </p-column>        
-        <p-column  header="firstName" >
-              <ng-template let-pers="rowData" pTemplate="body">
-                    <p-autoComplete [(ngModel)]="pers.items" [suggestions]="result" 
-                          (completeMethod)="search($event, 'firstName')" field="firstName" appendTo="body"
-                          [inputStyle]="{'width':'300px'}" (onSelect)="getData($event)"
-                          [minLength]="1" placeholder="Введите имя">
-                    </p-autoComplete>
-              </ng-template>
-        </p-column>
-        <p-column  header="lastName" >
-              <ng-template let-pers="rowData" pTemplate="body">
-                    <p-autoComplete [(ngModel)]="pers.items" [suggestions]="result" 
-                          (completeMethod)="search($event,'lastName')" field="lastName" appendTo="body"
-                          [inputStyle]="{'width':'300px'}" (onSelect)="getData($event)"
-                          [minLength]="1" placeholder="Введите фамилию">
-                    </p-autoComplete>
-              </ng-template>
-        </p-column> 
-        <p-column  header="age" >
-              <ng-template let-pers="rowData" pTemplate="body">
-                    <p-autoComplete [(ngModel)]="pers.items" [suggestions]="result" 
-                          (completeMethod)="search($event,'age')" field="age" appendTo="body"
-                          [inputStyle]="{'width':'300px'}" (onSelect)="getData($event)"
-                          [minLength]="1" placeholder="Введите возраст">
-                    </p-autoComplete>
-              </ng-template>
-        </p-column>         
+        <p-column field="firstName" header="firstName" [editable]="true"></p-column>
+        <p-column field="lastName" header="lastName" [editable]="true"></p-column> 
+        <p-column field="age" header="age" [editable]="true"></p-column>         
         <p-column field="fullName" header="fullName"></p-column>
 </p-dataTable>
 <p-autoComplete [(ngModel)]="val" [suggestions]="result" 
@@ -60,26 +36,6 @@
         </ng-template>
 </p-autoComplete>    
 <span style="margin-left:20px">Value: {{val ? val.fullName||value : 'none'}}</span>
-<!--
-        <p-column  header="firstName" [editable]="true">
-              <ng-template let-pers="rowData" pTemplate="body">
-                    <p-autoComplete [(ngModel)]="pers.items" [suggestions]="result" 
-                          (completeMethod)="search($event)" field="fullName" appendTo="body"
-                          [inputStyle]="{'width':'400px'}" (onSelect)="getData($event)"
-                          [minLength]="1" placeholder="Введите имя">{{pers.firstName}}
-                    </p-autoComplete>
-              </ng-template>
-        </p-column>    
-        <p-column styleClass="col-button"  [style]="{'width':'50px'}">
-            <ng-template pTemplate="header">
-                <button type="button" pButton  icon="fa-plus" (click)="addRow()"></button>
-            </ng-template>
-            <ng-template let-ri="rowIndex" let-myRow="rowData" pTemplate="body">
-                <button type="button" pButton (click)="deleteRow(myRow, ri)"
-                 class="ui-button-danger" icon="fa-trash">
-                </button>
-            </ng-template>
-        </p-column>
-        <p-column field="lastName" header="lastName" [editable]="true"></p-column>
-        <p-column field="age" header="age" [editable]="true"></p-column>
-  -->
+
+<select-dialog #dialog (addDocEvent)="onGetDocs($event)"></select-dialog>
+<!--<select-dialog #dialog [searchTerm]="y" [fieldTerm]="firstName" (addDocEvent)="onGetDocs($event)"></select-dialog>-->

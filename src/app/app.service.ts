@@ -16,6 +16,7 @@ export class AppService {
     constructor(private http: Http) { }
     
       search (term: string, nameField: string): Observable<Person[]> {
+        console.log(term, nameField);
       let params = new URLSearchParams();
       params.set(nameField+'_like', term);
       let a = this.http

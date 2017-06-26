@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+.ui-datalist-data li {
+    cursor: pointer;
+}  
+.ui-datalist-data li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+}
+/*.ui-datalist-data li.selected:hover {
+    background-color: #BBD8DC;
+    color: white;
+}*/

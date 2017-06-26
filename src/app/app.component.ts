@@ -23,10 +23,6 @@ export class AppComponent implements OnInit{
   val: Person;
   result: Person[];
  
-  firstName: string;
-  lastName: string;
-  age: number;
-
   constructor(private appService: AppService) {}
 
   ngOnInit(){ }
@@ -43,8 +39,6 @@ export class AppComponent implements OnInit{
       //console.log(JSON.stringify(event));
       //this.selectedRow = event;
       //console.log(this.selectedRow.entId);
-      this.lastName = event.lastName;
-      console.log(this.lastName);
   }
 
   deleteRow(e: any, ri:any){
@@ -84,8 +78,8 @@ export class AppComponent implements OnInit{
   onEditComplete(e: any){
 /*    console.log(e.column);
     console.log(e.data;
-    console.log(e.data.firstName);
     console.log(e.index);*/
+    //console.log(e.data.firstName);
   }
 
 }
