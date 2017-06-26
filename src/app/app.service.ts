@@ -15,9 +15,9 @@ export class AppService {
 
     constructor(private http: Http) { }
     
-      search (term: string): Observable<Person[]> {
+      search (term: string, nameField: string): Observable<Person[]> {
       let params = new URLSearchParams();
-      params.set('firstName_like', term);
+      params.set(nameField+'_like', term);
       let a = this.http
             .get(this.searchUrl, { search: params })
             .map(response => response.json())

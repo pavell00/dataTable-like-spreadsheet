@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from './person';
 import {AppService} from './app.service';
 
-const PERSON: Person[] = [
+/*const PERSON: Person[] = [
   {firstName: "John", lastName: "Bag", age: 35},
   {firstName: "Bill", lastName: "Alex", age: 25},
   {firstName: "Mark", lastName: "Berd", age: 15},
   {firstName: "Stiv", lastName: "Yang", age: 45}
-];
+];*/
 
 @Component({
   selector: 'app-root',
@@ -16,31 +16,35 @@ const PERSON: Person[] = [
 })
 export class AppComponent implements OnInit{
   
-  title = 'DataTable component';
-  persons = PERSON;
+  title = 'DataTable component in spreadsheet mode';
+  persons: Person[]=[{}]; //PERSON;
   cols: any[];
   selectedRow: Person;
   val: Person;
   result: Person[];
  
-  
+  firstName: string;
+  lastName: string;
+  age: number;
 
   constructor(private appService: AppService) {}
 
   ngOnInit(){ }
 
-  search(event :any) {
-    console.log(event);
+  search(event :any, nameField:string) {
+    //console.log(event);
       let query = event.query;  
-      this.appService.search(query).subscribe(
+      this.appService.search(query, nameField).subscribe(
               (v) => {this.result = v;}
           )
   }
 
   getData(event: any){
-      console.log(JSON.stringify(event));
+      //console.log(JSON.stringify(event));
       //this.selectedRow = event;
       //console.log(this.selectedRow.entId);
+      this.lastName = event.lastName;
+      console.log(this.lastName);
   }
 
   deleteRow(e: any, ri:any){

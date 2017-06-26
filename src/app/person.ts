@@ -1,5 +1,4 @@
 export class Person {
-    firstName: string;
-    lastName: string;
-    age: number;
+    
+    constructor(public firstName?: string, public lastName?: string, public age?: number)
 }
