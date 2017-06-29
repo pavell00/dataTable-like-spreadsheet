@@ -2,7 +2,7 @@
   {{title}}
 </h1>
 <p-dataTable [value]="persons" [editable]="true"
-      [(selection)]="selectedRow" 
+
       [rowHover]="true" 
       (onRowClick)="onRowClick($event)" 
       (onEditInit)="onEditInit($event)"
@@ -17,25 +17,15 @@
                  class="ui-button-danger" icon="fa-trash">
                 </button>
             </ng-template>
-        </p-column>        
+        </p-column>
+        <p-column header="No">
+            <ng-template let-ri="rowIndex" pTemplate="item">{{ri}}</ng-template>
+        </p-column> 
         <p-column field="firstName" header="firstName" [editable]="true"></p-column>
         <p-column field="lastName" header="lastName" [editable]="true"></p-column> 
         <p-column field="age" header="age" [editable]="true"></p-column>         
         <p-column field="fullName" header="fullName"></p-column>
 </p-dataTable>
-<p-autoComplete [(ngModel)]="val" [suggestions]="result" 
-    (completeMethod)="search($event)" field="firstName" 
-    [inputStyle]="{'width':'155px'}" (onSelect)="getData($event)"
-     [minLength]="1" placeholder="Введите имя">
-        <ng-template let-pers pTemplate="item">
-            <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
-                <div style="font-size:18px;float:right;margin:10px 10px 0 0">
-                  {{pers.firstName}} - {{pers.lastName}}
-                </div>
-            </div>
-        </ng-template>
-</p-autoComplete>    
-<span style="margin-left:20px">Value: {{val ? val.fullName||value : 'none'}}</span>
-
-<select-dialog #dialog (addDocEvent)="onGetDocs($event)"></select-dialog>
+ 
+<select-dialog #dialog (myEvent)="onGetItem($event)"></select-dialog>
 <!--<select-dialog #dialog [searchTerm]="y" [fieldTerm]="firstName" (addDocEvent)="onGetDocs($event)"></select-dialog>-->

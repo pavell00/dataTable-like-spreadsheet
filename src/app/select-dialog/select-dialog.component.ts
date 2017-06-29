@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {AppService} from '../app.service';
 import { Person } from '../person';
 
@@ -10,16 +10,26 @@ import { Person } from '../person';
 })
 export class SelectDialogComponent implements OnInit {
 
-  @Input() searchTerm: string;
-  @Input() fieldTerm: string;
-
   displayDialog: boolean;
-  result: Person[]=[];
+  persons: Person[] = [];
+  selectedPerson: Person;
+  result_length: number=0;
+
+  @Output() myEvent: EventEmitter<Person> = new EventEmitter();
 
   constructor(private appService: AppService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
 
+  onSelect(p: Person){
+    //console.log(p);
+    this.selectedPerson = p;
+  }
+
+  yesClick(){
+    if(this.selectedPerson !== undefined){
+      this.myEvent.emit(this.selectedPerson);
+    }
   }
 
   onOpenDlg(e: any){
@@ -27,18 +37,28 @@ export class SelectDialogComponent implements OnInit {
     //console.log(e.column.field);
     let term: any = e.data[e.column.field];
     if(term !== undefined && term !== ''){
-      console.log('onOpenDlg' + JSON.stringify(e.data));
+      //console.log('onOpenDlg' + JSON.stringify(e.data));
       this.search(term, e.column.field);
-      this.displayDialog = true;
+      //console.log(this.result_length);
+      if(this.result_length !== 0) {
+          this.displayDialog = true;
+          this.result_length = 0;
+      } else {
+        alert("Ничего не найдено!");
+      }
     }
   }
   
   close(){this.displayDialog = false}
 
   search(term :string, nameField:string) {
-    //console.log(event);
-    this.appService.search(term, nameField).subscribe(
-            (v) => {this.result = v;}
+    //let b = await this.getReslength();
+ 
+        this.appService.search(term, nameField).subscribe(
+            (v) => {this.persons = v;
+                    this.result_length = this.persons.length;},
+            (error) => (console.log(error)),
+            () => true
         )
   }
 }

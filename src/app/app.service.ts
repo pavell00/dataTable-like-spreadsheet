@@ -17,12 +17,12 @@ export class AppService {
     
       search (term: string, nameField: string): Observable<Person[]> {
         console.log(term, nameField);
-      let params = new URLSearchParams();
-      params.set(nameField+'_like', term);
-      let a = this.http
-            .get(this.searchUrl, { search: params })
-            .map(response => response.json())
-      return a;
+        let params = new URLSearchParams();
+        params.set(nameField+'_like', term);
+        let a = this.http
+              .get(this.searchUrl, { search: params })
+              .map(response => response.json())
+        return a;
   }
 
 }
