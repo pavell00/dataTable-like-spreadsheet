@@ -11,7 +11,8 @@
       [rowHover]="true" 
       (onRowClick)="onRowClick($event)" 
       (onEditInit)="onEditInit($event)"
-      (onEdit)="onEdit($event)">
+      (onEdit)="onEdit($event)"
+      (onRowSelect)="onRowSelect($event)">
         <p-column styleClass="col-button"  [style]="{'width':'50px'}">
             <ng-template pTemplate="header">
                 <button type="button" pButton  icon="fa-plus" (click)="addRow()"></button>
@@ -32,4 +33,3 @@
 </p-dataTable>
  
 <select-dialog #dialog (myEvent)="onGetItem($event)"></select-dialog>
-<!--<select-dialog #dialog [searchTerm]="y" [fieldTerm]="firstName" (addDocEvent)="onGetDocs($event)"></select-dialog>-->

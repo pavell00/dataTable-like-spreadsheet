@@ -10,7 +10,7 @@ import {SelectItem} from 'primeng/primeng';
 })
 export class AppComponent implements OnInit{
   
-  title = 'DataTable component in spreadsheet mode';
+  title = 'DataTable component in table mode with drop-down selector';
   persons: Person[]=[];
   selectedRow: Person;
   selectedType: string;
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit{
   }
 
   onRowClick(e: any){
-    //console.log(e.data);
+    //console.log(e);
     //console.log(this.selectedRow);
   }
 
@@ -95,5 +95,8 @@ export class AppComponent implements OnInit{
     console.log(e.index);*/
     //console.log(e.data.firstName);
   }
-
+  onRowSelect(e: any){
+    //console.log(e);
+    console.log(e.data);
+  }
 }
