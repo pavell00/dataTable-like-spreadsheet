@@ -32,13 +32,11 @@ export class SelectDialogComponent implements OnInit {
     }
   }
 
-  onOpenDlg(e: any){
-    //console.log(Object.keys(e));
-    //console.log(e.column.field);
-    let term: any = e.data[e.column.field];
+  onOpenDlg(term: string, field: string){
+    //console.log(term, field);
     if(term !== undefined && term !== ''){
       //console.log('onOpenDlg' + JSON.stringify(e.data));
-      this.search(term, e.column.field);
+      this.search(term, field);
       //console.log(this.result_length);
       if(this.result_length !== 0) {
           this.displayDialog = true;
@@ -52,13 +50,11 @@ export class SelectDialogComponent implements OnInit {
   close(){this.displayDialog = false}
 
   search(term :string, nameField:string) {
-    //let b = await this.getReslength();
- 
-        this.appService.search(term, nameField).subscribe(
-            (v) => {this.persons = v;
-                    this.result_length = this.persons.length;},
-            (error) => (console.log(error)),
-            () => true
-        )
+    this.appService.search(term, nameField).subscribe(
+        (v) => {this.persons = v;
+                this.result_length = this.persons.length;},
+        (error) => (console.log(error)),
+        () => true
+    )
   }
 }

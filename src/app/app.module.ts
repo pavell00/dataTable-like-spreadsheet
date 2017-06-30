@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableModule,SharedModule, 
          AutoCompleteModule,ButtonModule,
          DataListModule, DialogModule,
-         InputTextModule} from 'primeng/primeng';
+         InputTextModule, DropdownModule} from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import {AppService} from './app.service';
@@ -25,7 +25,7 @@ import { SelectDialogComponent } from './select-dialog/select-dialog.component';
     HttpModule,
     DataTableModule, SharedModule, AutoCompleteModule,
     ButtonModule, DataListModule, DialogModule,
-    InputTextModule
+    InputTextModule, DropdownModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

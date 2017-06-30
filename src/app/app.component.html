@@ -1,8 +1,13 @@
 <h1>
   {{title}}
 </h1>
-<p-dataTable [value]="persons" [editable]="true"
-
+<div>
+    <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
+    <input type="text" #val pInputText 
+        (input)="searchTerm(val.value, selectedType);dialog.onOpenDlg(val.value, selectedType)"/>
+</div>
+<p-dataTable [value]="persons"
+      [(selection)]="selectedRow" selectionMode="single"
       [rowHover]="true" 
       (onRowClick)="onRowClick($event)" 
       (onEditInit)="onEditInit($event)"
@@ -21,9 +26,9 @@
         <p-column header="No">
             <ng-template let-ri="rowIndex" pTemplate="item">{{ri}}</ng-template>
         </p-column> 
-        <p-column field="firstName" header="firstName" [editable]="true"></p-column>
-        <p-column field="lastName" header="lastName" [editable]="true"></p-column> 
-        <p-column field="age" header="age" [editable]="true"></p-column>         
+        <p-column field="firstName" header="firstName"></p-column>
+        <p-column field="lastName" header="lastName"></p-column> 
+        <p-column field="age" header="age"></p-column>         
         <p-column field="fullName" header="fullName"></p-column>
 </p-dataTable>
  

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from './person';
 import {AppService} from './app.service';
+import {SelectItem} from 'primeng/primeng';
 
 @Component({
   selector: 'app-root',
@@ -10,31 +11,35 @@ import {AppService} from './app.service';
 export class AppComponent implements OnInit{
   
   title = 'DataTable component in spreadsheet mode';
-  persons: Person[]=[{}]; //PERSON;
-  result: Person[];
-  currentCol: number;
-  currentRow: number = 0;
-  selectedRow: any;
-
-  constructor(private appService: AppService) {}
+  persons: Person[]=[];
+  selectedRow: Person;
+  selectedType: string;
+  types: SelectItem[];
+ 
+  constructor(private appService: AppService) {
+    this.types = [];
+    this.types.push({label:'First Name', value:'firstName'});
+    this.types.push({label:'Last Name', value:'lastName'});
+    this.types.push({label:'Age', value:'age'});
+    this.selectedType = this.types[0].value;
+  }
 
   ngOnInit(){  }
 
   onGetItem(p: Person){
     //console.log('onGetItem' + JSON.stringify(p));
-    /*let person = [...this.persons];
+    let person = [...this.persons];
     person.push(p);
-    this.persons = person;*/
-    //console.log(p, this.currentRow);
-    let person =  [...this.persons];
-    person[this.currentRow] = p;
     this.persons = person;
+    //console.log(p, this.currentRow);
+    /*let person =  [...this.persons];
+    person[this.currentRow] = p;
+    this.persons = person;*/
     //console.log(this.persons);
   }
 
-  onInput(ri: number){
-    console.log('ri= '+ri);
-    this.currentRow = ri;
+  searchTerm(e: any, b: any){
+    //console.log(e, b);
   }
   onClick(ri: number){
     console.log('ri= '+ri);
