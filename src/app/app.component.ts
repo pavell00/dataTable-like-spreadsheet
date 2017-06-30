@@ -15,7 +15,8 @@ export class AppComponent implements OnInit{
   selectedRow: Person;
   selectedType: string;
   types: SelectItem[];
- 
+  myValue: any = '';
+
   constructor(private appService: AppService) {
     this.types = [];
     this.types.push({label:'First Name', value:'firstName'});
@@ -31,11 +32,20 @@ export class AppComponent implements OnInit{
     let person = [...this.persons];
     person.push(p);
     this.persons = person;
-    //console.log(p, this.currentRow);
-    /*let person =  [...this.persons];
-    person[this.currentRow] = p;
-    this.persons = person;*/
-    //console.log(this.persons);
+    switch (this.selectedType) {
+      case 'firstName':
+        this.myValue = p.firstName
+        break;
+      case 'lastName':
+          this.myValue = p.lastName
+          break;
+      case 'age':
+          this.myValue = p.age
+          break;          
+      default:
+        this.myValue = p.firstName
+        break;
+    }
   }
 
   searchTerm(e: any, b: any){
