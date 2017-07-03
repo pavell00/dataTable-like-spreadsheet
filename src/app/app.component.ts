@@ -12,10 +12,10 @@ export class AppComponent implements OnInit{
   
   title = 'DataTable component in table mode with drop-down selector';
   persons: Person[]=[];
-  selectedRow: Person;
   selectedType: string;
   types: SelectItem[];
   myValue: any = '';
+  selectedRowNo: number = -1;
 
   constructor(private appService: AppService) {
     this.types = [];
@@ -25,35 +25,54 @@ export class AppComponent implements OnInit{
     this.selectedType = this.types[0].value;
   }
 
-  ngOnInit(){  }
+  ngOnInit(){ }
 
   onGetItem(p: Person){
-    //console.log('onGetItem' + JSON.stringify(p));
     let person = [...this.persons];
-    person.push(p);
+    if (this.selectedRowNo == -1) {
+        person.push(p);
+
+    } else {
+        person[this.selectedRowNo] = p;
+        this.selectedRowNo = -1;
+    }
     this.persons = person;
     switch (this.selectedType) {
+        case 'firstName':
+          this.myValue = p.firstName
+          break;
+        case 'lastName':
+            this.myValue = p.lastName
+            break;
+        case 'age':
+            this.myValue = p.age
+            break;          
+        default:
+          this.myValue = p.firstName
+          break;
+    }
+  }
+
+  onRowEdit(ri: number, rd: any){
+    //console.log(ri, rd);
+    this.selectedRowNo = ri;
+    let person = this.persons[ri];
+    switch (this.selectedType) {
       case 'firstName':
-        this.myValue = p.firstName
+        this.myValue = person.firstName
         break;
       case 'lastName':
-          this.myValue = p.lastName
+          this.myValue = person.lastName
           break;
       case 'age':
-          this.myValue = p.age
+          this.myValue = person.age
           break;          
       default:
-        this.myValue = p.firstName
+        this.myValue = person.firstName
         break;
     }
   }
 
-  searchTerm(e: any, b: any){
-    //console.log(e, b);
-  }
-  onClick(ri: number){
-    console.log('ri= '+ri);
-  }
   deleteRow(e: any, ri:any){
     console.log(ri);
     //let index = this.persons.indexOf(ri);
@@ -90,13 +109,19 @@ export class AppComponent implements OnInit{
   }
 
   onEditComplete(e: any){
-/*    console.log(e.column);
+/*  console.log(e.column);
     console.log(e.data;
     console.log(e.index);*/
     //console.log(e.data.firstName);
   }
-  onRowSelect(e: any){
-    //console.log(e);
-    console.log(e.data);
+
+  searchTerm(e: any, b: any){
+    //console.log(e, b);
   }
+
+  onClick(ri: number){
+    console.log('ri= '+ri);
+  }
+
+  
 }

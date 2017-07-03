@@ -7,12 +7,12 @@
         (input)="searchTerm(val.value, selectedType);dialog.onOpenDlg(val.value, selectedType)"/>
 </div>
 <p-dataTable [value]="persons"  [editable]="true"
-
-      [rowHover]="true" 
-      (onRowClick)="onRowClick($event)" 
-      (onEditInit)="onEditInit($event)"
-      (onEdit)="onEdit($event)"
-      (onRowSelect)="onRowSelect($event)">
+        [(selection)]="selectedRow"
+        [rowHover]="true"
+        dataKey="fullName"
+        (onRowClick)="onRowClick($event)"
+        (onEditInit)="onEditInit($event)"
+        (onEdit)="onEdit($event)">
         <p-column styleClass="col-button"  [style]="{'width':'50px'}">
             <ng-template pTemplate="header">
                 <button type="button" pButton  icon="fa-plus" (click)="addRow()"></button>
@@ -23,6 +23,11 @@
                 </button>
             </ng-template>
         </p-column>
+        <p-column styleClass="col-button"  [style]="{'width':'50px'}" >
+            <ng-template pTemplate="item" let-ri="rowIndex" let-rd="rowData">
+                <p-radioButton name="groupname" (onClick)="onRowEdit(ri, rd)" ></p-radioButton>
+            </ng-template>
+        </p-column>
         <p-column header="No">
             <ng-template let-ri="rowIndex" pTemplate="item">{{ri}}</ng-template>
         </p-column> 
@@ -31,5 +36,13 @@
         <p-column field="age" header="age"  [editable]="true"></p-column>         
         <p-column field="fullName" header="fullName"></p-column>
 </p-dataTable>
- 
+
 <select-dialog #dialog (myEvent)="onGetItem($event)"></select-dialog>
+<!--   <ng-template let-ri="rowIndex" pTemplate="body" selectedRowNo="ri">
+           <p-radioButton name="groupname" selectedRowNo="ri" (onClick)="onSelectRadioButton(ri)">
+           </p-radioButton>
+       </ng-template>
+       <button type="button" pButton  icon="fa-pencil" (click)="onRowEdit(ri)"></button>
+       <p-toggleButton onLabel="" offLabel="" onIcon=" fa-pencil-square-o"
+         offIcon="fa-square-o" (onChange)="onRowEdit(ri, rd)"></p-toggleButton>
+-->
