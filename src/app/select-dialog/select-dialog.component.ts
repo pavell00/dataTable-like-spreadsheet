@@ -62,7 +62,7 @@ export class SelectDialogComponent implements OnInit {
 
   onOpenDlg(term: string, field: string){
     //console.log(term, field);
-    if(term !== undefined && term !== ''){
+    if(term !== undefined && term !== '' && term.length >= 2){
       //console.log('onOpenDlg' + JSON.stringify(e.data));
       this.search(term, field);
       //console.log(this.result_length);
@@ -75,7 +75,10 @@ export class SelectDialogComponent implements OnInit {
     }
   }
   
-  close(){this.displayDialog = false}
+  close(){
+    this.index = 0;
+    this.displayDialog = false
+  }
 
   search(term :string, nameField:string) {
     this.appService.search(term, nameField).subscribe(

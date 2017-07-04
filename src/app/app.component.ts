@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Person } from './person';
-import {AppService} from './app.service';
-import {SelectItem} from 'primeng/primeng';
+import { AppService } from './app.service';
+import { SelectItem } from 'primeng/primeng';
 
 @Component({
   selector: 'app-root',
