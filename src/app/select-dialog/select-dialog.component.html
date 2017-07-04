@@ -1,9 +1,9 @@
-<p-dialog header="Found list items" [(visible)]="displayDialog">
+<p-dialog header="Found list items" [(visible)]="displayDialog" modal="true">
     <div class="ui-dialog-content">
-        <ul class="items">
-            <li *ngFor="let person of persons" (click)="onSelect(person)" 
+        <ul class="items" (window:keydown)="keydown($event)">
+            <li *ngFor="let person of persons; let i=index, let last=last" (click)="onSelect(person, i)"
                     [class.selected]="person === selectedPerson">
-                    {{person.firstName}} - {{person.lastName}} - {{person.age}}
+                    {{person.firstName}} - {{person.lastName}} - {{person.age}} - {{i}}
             </li>
         </ul>
     </div>
@@ -16,7 +16,7 @@
         <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
             <button type="button" pButton icon="fa-close" (click)="displayDialog=false" label="No"></button>
             <button type="button" pButton icon="fa-check" 
-                (click)="displayDialog=false" label="Yes" (click)="yesClick()">
+                (click)="displayDialog=false" label="Yes" (click)="ClickOk()">
             </button>
         </div>
     </p-footer>

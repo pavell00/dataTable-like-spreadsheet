@@ -3,7 +3,7 @@
 </h1>
 <div>
     <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
-    <input type="text" #val pInputText [value]="myValue"
+    <input type="text" #val pInputText [value]="myValue" myAutofocus
         (input)="searchTerm(val.value, selectedType);dialog.onOpenDlg(val.value, selectedType)"/>
 </div>
 <p-dataTable [value]="persons"  [editable]="true"

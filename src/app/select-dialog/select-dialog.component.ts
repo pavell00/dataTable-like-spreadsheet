@@ -13,20 +13,48 @@ export class SelectDialogComponent implements OnInit {
   displayDialog: boolean;
   persons: Person[] = [];
   selectedPerson: Person;
-  result_length: number=0;
+  result_length: number = 0;
+  index: number = 0;
 
   @Output() myEvent: EventEmitter<Person> = new EventEmitter();
+  
 
   constructor(private appService: AppService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  onSelect(p: Person){
-    //console.log(p);
+  onSelect(p: Person, i: number){
     this.selectedPerson = p;
+    this.index = i;
   }
 
-  yesClick(){
+  ngAfterViewInit(){}
+
+  keydown(e: any){
+    //console.log(e.code)
+    switch (e.code) {
+      case 'ArrowUp':
+        if (this.index > 0) {
+          this.index--
+          this.selectedPerson = this.persons[this.index]
+        }  
+        break;
+      case 'ArrowDown':
+        if (this.index < this.result_length-1) {
+          this.index++
+          this.selectedPerson = this.persons[this.index]
+        }  
+        break;
+      case 'Enter':
+        this.ClickOk();
+        this.close();
+        break;
+      default:
+        break;
+    }
+  }
+
+  ClickOk(){
     if(this.selectedPerson !== undefined){
       this.myEvent.emit(this.selectedPerson);
     }
@@ -52,7 +80,8 @@ export class SelectDialogComponent implements OnInit {
   search(term :string, nameField:string) {
     this.appService.search(term, nameField).subscribe(
         (v) => {this.persons = v;
-                this.result_length = this.persons.length;},
+                this.result_length = this.persons.length;
+                this.selectedPerson = this.persons[0];},
         (error) => (console.log(error)),
         () => true
     )

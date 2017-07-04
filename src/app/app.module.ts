@@ -13,11 +13,13 @@ import { DataTableModule,SharedModule,
 import { AppComponent } from './app.component';
 import {AppService} from './app.service';
 import { SelectDialogComponent } from './select-dialog/select-dialog.component';
+import { AutoFocusDirective } from './auto-focus.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SelectDialogComponent
+    SelectDialogComponent,
+    AutoFocusDirective
   ],
   imports: [
     BrowserModule,

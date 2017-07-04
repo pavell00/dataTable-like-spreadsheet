@@ -29,6 +29,30 @@
       "lastName": "gor",
 	    "age":22,
       "fullName": "joshua gor, age: 22"        
-    }    
+    },
+    {
+      "firstName": "jimmy",
+      "lastName": "fox",
+	    "age":28,
+      "fullName": "jimmy fox, age: 28"        
+    },
+    {
+      "firstName": "jonatan",
+      "lastName": "dogerty",
+	    "age":47,
+      "fullName": "jonatan dogerty, age: 47"        
+    },
+    {
+      "firstName": "jipsy",
+      "lastName": "king",
+	    "age":37,
+      "fullName": "jipsy king, age: 37"        
+    },
+    {
+      "firstName": "jacklin",
+      "lastName": "torn",
+	    "age":27,
+      "fullName": "jacklin torn, age: 27"        
+    }
   ]
 }
