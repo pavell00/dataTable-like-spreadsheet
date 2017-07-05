@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {AppService} from '../app.service';
-import { Person } from '../person';
+import { Entities } from '../Entities';
 
 @Component({
-  moduleId: module.id,
+
   selector: 'select-dialog',
   templateUrl: './select-dialog.component.html',
   styleUrls: ['./select-dialog.component.css']
@@ -11,20 +11,20 @@ import { Person } from '../person';
 export class SelectDialogComponent implements OnInit {
 
   displayDialog: boolean;
-  persons: Person[] = [];
-  selectedPerson: Person;
+  entities: Entities[] = [];
+  selectedEntities: Entities;
   result_length: number = 0;
   index: number = 0;
 
-  @Output() myEvent: EventEmitter<Person> = new EventEmitter();
+  @Output() myEvent: EventEmitter<Entities> = new EventEmitter();
   
 
   constructor(private appService: AppService) { }
 
   ngOnInit() { }
 
-  onSelect(p: Person, i: number){
-    this.selectedPerson = p;
+  onSelect(p: Entities, i: number){
+    this.selectedEntities = p;
     this.index = i;
   }
 
@@ -36,13 +36,13 @@ export class SelectDialogComponent implements OnInit {
       case 'ArrowUp':
         if (this.index > 0) {
           this.index--
-          this.selectedPerson = this.persons[this.index]
+          this.selectedEntities = this.entities[this.index]
         }  
         break;
       case 'ArrowDown':
         if (this.index < this.result_length-1) {
           this.index++
-          this.selectedPerson = this.persons[this.index]
+          this.selectedEntities = this.entities[this.index]
         }  
         break;
       case 'Enter':
@@ -55,8 +55,8 @@ export class SelectDialogComponent implements OnInit {
   }
 
   ClickOk(){
-    if(this.selectedPerson !== undefined){
-      this.myEvent.emit(this.selectedPerson);
+    if(this.selectedEntities !== undefined){
+      this.myEvent.emit(this.selectedEntities);
     }
   }
 
@@ -82,9 +82,9 @@ export class SelectDialogComponent implements OnInit {
 
   search(term :string, nameField:string) {
     this.appService.search(term, nameField).subscribe(
-        (v) => {this.persons = v;
-                this.result_length = this.persons.length;
-                this.selectedPerson = this.persons[0];},
+        (v) => {this.entities = v;
+                this.result_length = this.entities.length;
+                this.selectedEntities = this.entities[0];},
         (error) => (console.log(error)),
         () => true
     )

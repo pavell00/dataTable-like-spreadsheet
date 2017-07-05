@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Person } from './person';
+import { Entities } from './entities';
 import { AppService } from './app.service';
 import { SelectItem } from 'primeng/primeng';
 
@@ -11,7 +11,7 @@ import { SelectItem } from 'primeng/primeng';
 export class AppComponent implements OnInit{
   
   title = 'DataTable component in table mode with drop-down selector';
-  persons: Person[]=[];
+  entities: Entities[]=[];
   selectedType: string;
   types: SelectItem[];
   myValue: any = '';
@@ -19,36 +19,33 @@ export class AppComponent implements OnInit{
 
   constructor(private appService: AppService) {
     this.types = [];
-    this.types.push({label:'First Name', value:'firstName'});
-    this.types.push({label:'Last Name', value:'lastName'});
-    this.types.push({label:'Age', value:'age'});
+    this.types.push({label:'Имя ОУ', value:'ent_name'});
+    this.types.push({label:'Nom №', value:'ent_nom'});
+    this.types.push({label:'ID', value:'ent_id'});
     this.selectedType = this.types[0].value;
   }
 
   ngOnInit(){ }
 
-  onGetItem(p: Person){
-    let person = [...this.persons];
+  onGetItem(p: Entities){
+    let entity = [...this.entities];
     if (this.selectedRowNo == -1) {
-        person.push(p);
+        entity.push(p);
 
     } else {
-        person[this.selectedRowNo] = p;
+        entity[this.selectedRowNo] = p;
         this.selectedRowNo = -1;
     }
-    this.persons = person;
+    this.entities = entity;
     switch (this.selectedType) {
-        case 'firstName':
-          this.myValue = p.firstName
+        case 'ent_nom':
+          this.myValue = p.ent_nom
           break;
-        case 'lastName':
-            this.myValue = p.lastName
+        case 'ent_name':
+            this.myValue = p.ent_name
             break;
-        case 'age':
-            this.myValue = p.age
-            break;          
         default:
-          this.myValue = p.firstName
+          this.myValue = p.ent_name
           break;
     }
   }
@@ -56,40 +53,37 @@ export class AppComponent implements OnInit{
   onRowEdit(ri: number, rd: any){
     //console.log(ri, rd);
     this.selectedRowNo = ri;
-    let person = this.persons[ri];
+    let entity = this.entities[ri];
     switch (this.selectedType) {
-      case 'firstName':
-        this.myValue = person.firstName
+      case 'ent_nom':
+        this.myValue = entity.ent_nom
         break;
-      case 'lastName':
-          this.myValue = person.lastName
+      case 'ent_name':
+          this.myValue = entity.ent_name
           break;
-      case 'age':
-          this.myValue = person.age
-          break;          
       default:
-        this.myValue = person.firstName
+        this.myValue = entity.ent_name
         break;
     }
   }
 
   deleteRow(e: any, ri:any){
     console.log(ri);
-    //let index = this.persons.indexOf(ri);
-    //console.log(this.persons.length);
-    this.persons = this.persons.filter((val, i) => i!=ri);
-    //this.persons.splice(index, 1);
-    //console.log(this.persons.length);
+    //let index = this.entities.indexOf(ri);
+    //console.log(this.entities.length);
+    this.entities = this.entities.filter((val, i) => i!=ri);
+    //this.entities.splice(index, 1);
+    //console.log(this.entities.length);
   }
 
   addRow(){
-    let person = [...this.persons];
-    let b = new Person();
+    let entity = [...this.entities];
+    let b = new Entities();
 /*    b.firstName = "Tommy";
     b.lastName = "lie";
     b.age = 50;*/
-    person.push(b);
-    this.persons = person;
+    entity.push(b);
+    this.entities = entity;
   }
 
   onRowClick(e: any){

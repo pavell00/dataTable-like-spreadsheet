@@ -6,28 +6,16 @@ import 'rxjs/add/operator/catch';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
 
-import {Person} from './person';
 import {Entities} from './Entities';
 
 @Injectable()
 export class AppService {
 
-    searchUrl: string = 'http://localhost:3004/persons';
-    searchUrlEntities: string = 'http://localhost:3004/entities';
+    searchUrl: string = 'http://localhost:3004/entities';
 
     constructor(private http: Http) { }
     
-      search (term: string, nameField: string): Observable<Person[]> {
-        console.log(term, nameField);
-        let params = new URLSearchParams();
-        params.set(nameField+'_like', term);
-        let a = this.http
-              .get(this.searchUrl, { search: params })
-              .map(response => response.json())
-        return a;
-  }
-
-      searchEnt (term: string, nameField: string): Observable<Entities[]> {
+      search (term: string, nameField: string): Observable<Entities[]> {
         console.log(term, nameField);
         let params = new URLSearchParams();
         params.set(nameField+'_like', term);

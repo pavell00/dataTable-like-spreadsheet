@@ -1,17 +1,13 @@
 <p-dialog header="Found list items" [(visible)]="displayDialog" modal="true">
     <div class="ui-dialog-content">
         <ul class="items" (window:keydown)="keydown($event)">
-            <li *ngFor="let person of persons; let i=index, let last=last" (click)="onSelect(person, i)"
+            <li *ngFor="let entity of entities; let i=index, let last=last" (click)="onSelect(person, i)"
                     [class.selected]="person === selectedPerson">
-                    {{person.firstName}} - {{person.lastName}} - {{person.age}} - {{i}}
+                    {{entity.ent_id}} - {{entity.ent_nom}} - {{entity.ent_name}} - {{i}}
             </li>
         </ul>
     </div>
-    <!--<p-dataList [value]="persons" [class.selected]="person === selectedPerson" (click)="onSelect(person)">
-        <ng-template let-person pTemplate="item">
-            {{person.firstName}} - {{person.lastName}} - {{person.age}}
-        </ng-template>
-    </p-dataList>-->
+
     <p-footer>
         <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
             <button type="button" pButton icon="fa-close" (click)="displayDialog=false" label="No"></button>
