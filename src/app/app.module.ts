@@ -8,7 +8,7 @@ import { DataTableModule,SharedModule,
          AutoCompleteModule,ButtonModule,
          DataListModule, DialogModule,
          InputTextModule, DropdownModule,
-         RadioButtonModule} from 'primeng/primeng';
+         RadioButtonModule, CheckboxModule} from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import {AppService} from './app.service';
@@ -28,7 +28,8 @@ import { AutoFocusDirective } from './auto-focus.directive';
     HttpModule,
     DataTableModule, SharedModule, AutoCompleteModule,
     ButtonModule, DataListModule, DialogModule,
-    InputTextModule, DropdownModule, RadioButtonModule
+    InputTextModule, DropdownModule, RadioButtonModule,
+    CheckboxModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
