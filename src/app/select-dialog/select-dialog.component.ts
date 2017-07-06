@@ -3,7 +3,6 @@ import {AppService} from '../app.service';
 import { Person } from '../person';
 
 @Component({
-  moduleId: module.id,
   selector: 'select-dialog',
   templateUrl: './select-dialog.component.html',
   styleUrls: ['./select-dialog.component.css']
@@ -62,7 +61,7 @@ export class SelectDialogComponent implements OnInit {
 
   onOpenDlg(term: string, field: string){
     //console.log(term, field);
-    if(term !== undefined && term !== '' && term.length >= 2){
+    if(term !== undefined && term !== '' && term.length >= 1){
       //console.log('onOpenDlg' + JSON.stringify(e.data));
       this.search(term, field);
       //console.log(this.result_length);
