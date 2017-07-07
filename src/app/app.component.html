@@ -45,7 +45,7 @@
                     {{entity.ent_id}} - {{entity.ent_nom}} - {{entity.ent_name}} - {{i}}
             </li>
         </ul>-->
-        <p-dataTable [value]="find_entities" [rowHover]="true" 
+        <p-dataTable [value]="find_entities" [rowHover]="true"
                [scrollable]="true" scrollHeight="400px">
             <p-column  header="№" [style]="{'width':'35px'}">
                 <ng-template let-i="rowIndex" let-rd="rowData" pTemplate="item">{{i + 1}}
