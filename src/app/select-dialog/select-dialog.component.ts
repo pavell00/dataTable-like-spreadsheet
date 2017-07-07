@@ -68,17 +68,19 @@ export class SelectDialogComponent implements OnInit {
     }
   }
 
-  onOpenDlg(term: string, field: string){
+  onOpenDlg(e: any, term: string, field: string){
     //console.log(term, field);
-    if(term !== undefined && term !== '' && term.length >= 1){
-      //console.log('onOpenDlg' + JSON.stringify(e.data));
-      this.search(term, field);
-      //console.log(this.result_length);
-      if(this.result_length !== 0) {
-          this.displayDialog = true;
-          this.result_length = 0;
-      } else {
-        alert("Ничего не найдено!");
+    if(e.key === 'Enter') {
+      if(term !== undefined && term !== '' && term.length >= 1){
+        //console.log('onOpenDlg' + JSON.stringify(e.data));
+        this.search(term, field);
+        //console.log(this.result_length);
+        if(this.result_length !== 0) {
+            this.displayDialog = true;
+            this.result_length = 0;
+        } else {
+          alert("Ничего не найдено!");
+        }
       }
     }
   }

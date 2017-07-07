@@ -4,7 +4,7 @@
 <div>
     <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
     <input type="text" #val pInputText (value)="myValue" myAutofocus
-    (input)="dialog.onOpenDlg(val.value, selectedType)" maxlength=15/>
+    (keydown)="dialog.onOpenDlg($event, val.value, selectedType)" maxlength=15/>
 </div>
 <p-dataTable [value]="entities"  [editable]="true"
         [(selection)]="selectedRow"
