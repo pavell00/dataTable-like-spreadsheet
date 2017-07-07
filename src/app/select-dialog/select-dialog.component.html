@@ -6,7 +6,7 @@
                     {{entity.ent_id}} - {{entity.ent_nom}} - {{entity.ent_name}} - {{i}}
             </li>
         </ul>-->
-        <p-dataTable [value]="entities" [rowHover]="true" 
+        <!--<p-dataTable [value]="entities" [rowHover]="true" 
                [scrollable]="true" scrollHeight="400px">
             <p-column  header="№" [style]="{'width':'35px'}">
                 <ng-template let-i="rowIndex" let-rd="rowData" pTemplate="item">{{i + 1}}
@@ -20,7 +20,15 @@
             <p-column field="ent_id" header="ID" [style]="{'width':'80px'}"></p-column>
             <p-column field="ent_nom" header="Nom №" [style]="{'width':'100px'}"></p-column> 
             <p-column field="ent_name" header="NAME Entity"></p-column>
-        </p-dataTable>
+        </p-dataTable>-->
+        <table>
+            <tr *ngFor="let entity of entities; let i=index, let last=last" (click)="onSelect(entity, i)">
+                <td>{{entity.ent_id}}</td>
+                <td>{{entity.ent_nom}}</td>
+                <td>{{entity.ent_name}}</td>
+                <td></td>
+            </tr>
+        </table>
     </div>
 
     <p-footer>

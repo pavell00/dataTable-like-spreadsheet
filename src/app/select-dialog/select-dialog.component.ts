@@ -32,6 +32,7 @@ export class SelectDialogComponent implements OnInit {
   onRowClick(e: any){console.log(e.data);}
 
   onSelect(p: Entities, i: number){
+    console.log(p, i);
     this.selectedEntities = p;
     this.index = i;
   }
@@ -39,8 +40,8 @@ export class SelectDialogComponent implements OnInit {
   ngAfterViewInit(){}
 
   keydown(e: any){
-    //console.log(e.code)
-    switch (e.code) {
+    //console.log(e.key)
+    switch (e.key) {
       case 'ArrowUp':
         if (this.index > 0) {
           this.index--
