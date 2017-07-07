@@ -1,10 +1,10 @@
 <h1>
-  {{title}}
+  {{title}} - {{selectedEntities}} - {{index}}
 </h1>
 <div>
     <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
     <input type="text" #val pInputText (value)="myValue" myAutofocus
-    (input)="dialog.onOpenDlg(val.value, selectedType)" maxlength=15/>
+        (keydown)="onOpenDlg($event, val.value, selectedType)" maxlength=15/>
 </div>
 <p-dataTable [value]="entities"  [editable]="true"
         [(selection)]="selectedRow"
@@ -37,4 +37,37 @@
         <p-column field="" header="age"  [editable]="true"></p-column>         
 </p-dataTable>
 
-<select-dialog #dialog (myEvent)="onGetItem($event)"></select-dialog>
+<p-dialog header="Found list items" [(visible)]="displayDialog" modal="true" >
+    <div class="ui-dialog-content"  style="height: 30%; width: 50em;">
+        <!--<ul class="items" (window:keydown)="keydown($event)">
+            <li *ngFor="let entity of entities; let i=index, let last=last" (click)="onSelect(entity, i)"
+                    [class.selected]="entity === selectedEntities">
+                    {{entity.ent_id}} - {{entity.ent_nom}} - {{entity.ent_name}} - {{i}}
+            </li>
+        </ul>-->
+        <p-dataTable [value]="find_entities" [rowHover]="true" 
+               [scrollable]="true" scrollHeight="400px">
+            <p-column  header="№" [style]="{'width':'35px'}">
+                <ng-template let-i="rowIndex" let-rd="rowData" pTemplate="item">{{i + 1}}
+                </ng-template>
+            </p-column>
+            <p-column header="V" [style]="{'width':'80px'}">
+                <ng-template let-i="rowIndex" let-rd="rowData" pTemplate="item">
+                    <p-radioButton name="group1" (onClick)="onSelect(rd, i)"></p-radioButton>
+                </ng-template>
+            </p-column>
+            <p-column field="ent_id" header="ID" [style]="{'width':'80px'}"></p-column>
+            <p-column field="ent_nom" header="Nom №" [style]="{'width':'100px'}"></p-column> 
+            <p-column field="ent_name" header="NAME Entity"></p-column>
+        </p-dataTable>
+    </div>
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="displayDialog=false" label="No"></button>
+            <button type="button" pButton icon="fa-check" 
+                (click)="displayDialog=false" label="Yes" (click)="ClickOk()">
+            </button>
+        </div>
+    </p-footer>
+</p-dialog>

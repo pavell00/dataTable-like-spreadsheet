@@ -17,6 +17,14 @@ export class AppComponent implements OnInit{
   myValue: any = '';
   selectedRowNo: number = -1;
 
+  displayDialog: boolean;
+  find_entities: Entities[] = [];
+  selectedEntities: Entities;
+  selectedValues: string[] = [];
+  result_length: number = 0;
+  index: number = 0;
+  selectedRow: any;
+
   constructor(private appService: AppService) {
     this.types = [];
     this.types.push({label:'Имя ОУ', value:'ent_name'});
@@ -117,5 +125,73 @@ export class AppComponent implements OnInit{
     console.log('ri= '+ri);
   }
 
-  
+  //------------------------
+  onSelect(p: Entities, i: number){
+    this.selectedEntities = p;
+    this.index = i;
+  }
+
+  ClickOk(){
+    if(this.selectedEntities !== undefined){
+      //this.myEvent.emit(this.selectedEntities);
+      this.onGetItem(this.selectedEntities);
+    }
+  }
+
+  onOpenDlg(e: any, term: string, field: string){
+    //console.log(term, field);
+    if (e.key === 'Enter'){
+      if(term !== undefined && term !== '' && term.length >= 1){
+        //console.log('onOpenDlg' + JSON.stringify(e.data));
+        this.search(term, field);
+        //console.log(this.result_length);
+        if(this.result_length !== 0) {
+            this.displayDialog = true;
+            this.result_length = 0;
+        } else {
+          alert("Ничего не найдено!");
+        }
+      }
+    }
+  }
+
+  search(term :string, nameField:string) {
+    this.appService.search(term, nameField).subscribe(
+        (v) => {this.find_entities = v;
+                this.result_length = this.find_entities.length;
+                this.selectedEntities = this.find_entities[0];},
+        (error) => (console.log(error)),
+        () => true
+    )
+  }
+
+  close(){
+    this.index = 0;
+    this.displayDialog = false
+  }
+
+  keydown(e: any){
+    //console.log(e.key)
+    switch (e.key) {
+      case 'ArrowUp':
+        if (this.index > 0) {
+          this.index--
+          this.selectedEntities = this.find_entities[this.index]
+        }
+        break;
+      case 'ArrowDown':
+        if (this.index < this.result_length-1) {
+          this.index++
+          this.selectedEntities = this.find_entities[this.index]
+        }
+        break;
+      case 'Enter':
+        this.ClickOk();
+        this.close();
+        break;
+      default:
+        break;
+    }
+  }
+
 }
