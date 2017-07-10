@@ -16,12 +16,14 @@ export class SelectDialogComponent implements OnInit {
   result_length: number = 0;
   index: number = 0;
   selectedRow: any;
+  private date;
+  private bFlag: boolean = false;
 
   @Output() myEvent: EventEmitter<Entities> = new EventEmitter();
   
   constructor(private appService: AppService) { }
 
-  ngOnInit() { }
+  ngOnInit() { this.date = new Date(); }
 
   onRowSelect(e: any){
     //console.log(e.data);
@@ -32,12 +34,10 @@ export class SelectDialogComponent implements OnInit {
   onRowClick(e: any){console.log(e.data);}
 
   onSelect(p: Entities, i: number){
-    console.log(p, i);
+    //console.log(p, i);
     this.selectedEntities = p;
     this.index = i;
   }
-
-  ngAfterViewInit(){}
 
   keydown(e: any){
     //console.log(e.key)
@@ -46,17 +46,22 @@ export class SelectDialogComponent implements OnInit {
         if (this.index > 0) {
           this.index--
           this.selectedEntities = this.entities[this.index]
+          this.bFlag = true;
         }
         break;
       case 'ArrowDown':
         if (this.index < this.result_length-1) {
           this.index++
           this.selectedEntities = this.entities[this.index]
+          this.bFlag = true;
         }
         break;
       case 'Enter':
-        this.ClickOk();
-        this.close();
+        if (this.bFlag === true) { //костыль от самосрабатывания окна поиска ?
+          this.ClickOk();
+          this.close();
+          this.bFlag = false;
+        }
         break;
       default:
         break;
