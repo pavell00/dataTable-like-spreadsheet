@@ -1,15 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Entities } from './entities';
-import { AppService } from './app.service';
+import { Entities } from '../../model/entities';
+import { AppService } from '../../services/app.service';
 import { SelectItem } from 'primeng/primeng';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'table-entity',
+  templateUrl: './table-entity.component.html',
+  styleUrls: ['./table-entity.component.css']
 })
-export class AppComponent implements OnInit{
-  
+export class TableEntityComponent implements OnInit{
+
   title = 'DataTable component in table mode with drop-down selector';
   entities: Entities[]=[];
   selectedType: string;

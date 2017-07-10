@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
 
-import {Entities} from './Entities';
+import {Entities} from '../model/entities';
 
 @Injectable()
 export class AppService {

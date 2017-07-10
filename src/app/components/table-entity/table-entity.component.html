@@ -1,6 +1,6 @@
-<h1>
+<h3>
   {{title}}
-</h1>
+</h3>
 <div>
     <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
     <input type="text" #val pInputText (value)="myValue" myAutofocus
@@ -37,4 +37,4 @@
         <p-column field="" header="age"  [editable]="true"></p-column>         
 </p-dataTable>
 
-<select-dialog #dialog (myEvent)="onGetItem($event)"></select-dialog>
+<search-entity-dlg #dialog (myEvent)="onGetItem($event)"></search-entity-dlg>

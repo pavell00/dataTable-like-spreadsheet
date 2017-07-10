@@ -1,13 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {AppService} from '../app.service';
-import { Entities } from '../Entities';
+import { AppService } from '../../services/app.service';
+import { Entities } from '../../model/entities';
 
 @Component({
-  selector: 'select-dialog',
-  templateUrl: './select-dialog.component.html',
-  styleUrls: ['./select-dialog.component.css']
+  selector: 'search-entity-dlg',
+  templateUrl: './search-entity-dlg.component.html',
+  styleUrls: ['./search-entity-dlg.component.css']
 })
-export class SelectDialogComponent implements OnInit {
+export class SearchEntityComponent implements OnInit {
 
   displayDialog: boolean;
   entities: Entities[] = [];

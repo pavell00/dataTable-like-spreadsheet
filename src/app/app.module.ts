@@ -10,16 +10,19 @@ import { DataTableModule,SharedModule,
          InputTextModule, DropdownModule,
          RadioButtonModule, CheckboxModule} from 'primeng/primeng';
 
-import { AppComponent } from './app.component';
-import {AppService} from './app.service';
-import { SelectDialogComponent } from './select-dialog/select-dialog.component';
+import { MainFormComponent } from './components/main-form/main-form.component';
+import { SearchEntityComponent } from './components/search-entity-dlg/search-entity-dlg.component';
+import { TableEntityComponent } from './components/table-entity/table-entity.component';
+import { AppService } from './services/app.service';
 import { AutoFocusDirective } from './auto-focus.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SelectDialogComponent,
-    AutoFocusDirective
+    MainFormComponent,
+    SearchEntityComponent,
+    AutoFocusDirective,
+    MainFormComponent,
+    TableEntityComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,6 @@ import { AutoFocusDirective } from './auto-focus.directive';
     CheckboxModule
   ],
   providers: [AppService],
-  bootstrap: [AppComponent]
+  bootstrap: [MainFormComponent]
 })
 export class AppModule { }
