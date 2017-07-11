@@ -15,6 +15,7 @@ import { SearchEntityComponent } from './components/search-entity-dlg/search-ent
 import { TableEntityComponent } from './components/table-entity/table-entity.component';
 import { AppService } from './services/app.service';
 import { AutoFocusDirective } from './auto-focus.directive';
+import { AgentSelectorComponent } from './components/agent-selector/agent-selector.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AutoFocusDirective } from './auto-focus.directive';
     SearchEntityComponent,
     AutoFocusDirective,
     MainFormComponent,
-    TableEntityComponent
+    TableEntityComponent,
+    AgentSelectorComponent
   ],
   imports: [
     BrowserModule,

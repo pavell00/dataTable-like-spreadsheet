@@ -13,7 +13,7 @@ export class SearchEntityComponent implements OnInit {
   entities: Entities[] = [];
   selectedEntities: Entities;
   selectedValues: string[] = [];
-  result_length: number = 0;
+  result_length: number;
   index: number = 0;
   selectedRow: any;
   private date;
@@ -75,18 +75,17 @@ export class SearchEntityComponent implements OnInit {
   }
 
   onOpenDlg(e: any, term: string, field: string){
-    //console.log(term, field);
-    if(e.key === 'Enter') {
+    //console.log(e.target.id, term, field);
+    if(e.key === 'Enter' && e.target.name === 'searchEntity') {
       if(term !== undefined && term !== '' && term.length >= 1){
-        //console.log('onOpenDlg' + JSON.stringify(e.data));
         this.search(term, field);
-        //console.log(this.result_length);
         if(this.result_length !== 0) {
             this.displayDialog = true;
-            this.result_length = 0;
         } else {
           alert("Ничего не найдено!");
+          //console.log('not find')
         }
+        this.result_length = 0;
       }
     }
   }
@@ -97,7 +96,7 @@ export class SearchEntityComponent implements OnInit {
   }
 
   search(term :string, nameField:string) {
-    this.appService.search(term, nameField).subscribe(
+    this.appService.searchEntity(term, nameField).subscribe(
         (v) => {this.entities = v;
                 this.result_length = this.entities.length;
                 this.selectedEntities = this.entities[0];},

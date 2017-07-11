@@ -1,0 +1,19 @@
+<div class="ui-g">
+  <div class="ui-g-2">
+      <p>Корреспондент Кому:</p>
+  </div>
+  <div class="ui-g-3">
+      <input name="searchAgentTo" type="text" [(ngModel)]="AgTo"  
+        pInputText placeholder='Укажите корреспондента Кому'
+        (window:keypress)="onOpenDlg($event)" size=35/>
+  </div>
+</div>
+<div class="ui-g">
+  <div class="ui-g-2">
+      <p>Корреспондент Кто:</p>
+  </div>
+  <div class="ui-g-3">
+      <input name="searchAgentFrom" type="text" [(ngModel)]="AgFrom" 
+        pInputText placeholder='Укажите корреспондента Кто' size=35/>
+  </div>
+</div>

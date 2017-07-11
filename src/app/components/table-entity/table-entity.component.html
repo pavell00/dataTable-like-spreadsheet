@@ -3,8 +3,8 @@
 </h3>
 <div>
     <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
-    <input type="text" #val pInputText (value)="myValue" myAutofocus
-    (keydown)="dialog.onOpenDlg($event, val.value, selectedType)" maxlength=15/>
+    <input type="text" name="searchEntity" #val pInputText (value)="myValue" myAutofocus
+    (window:keypress)="dialog.onOpenDlg($event, val.value, selectedType)" maxlength=15/>
 </div>
 <p-dataTable [value]="entities"  [editable]="true"
         [(selection)]="selectedRow"

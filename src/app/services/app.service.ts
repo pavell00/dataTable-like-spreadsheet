@@ -7,6 +7,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
 
 import {Entities} from '../model/entities';
+import {Agents} from '../model/agent';
 
 @Injectable()
 export class AppService {
@@ -15,14 +16,24 @@ export class AppService {
 
     constructor(private http: Http) { }
     
-      search (term: string, nameField: string): Observable<Entities[]> {
-        console.log(term, nameField);
+    searchEntity (term: string, nameField: string): Observable<Entities[]> {
+        console.log('searchEntity', term, nameField);
         let params = new URLSearchParams();
         params.set(nameField+'_like', term);
         let a = this.http
               .get(this.searchUrl, { search: params })
               .map(response => response.json())
         return a;
-  }
+    }
+
+    searchAgent (term: string, nameField: string): Observable<Agents[]> {
+        console.log('searchAgent', term, nameField);
+        let params = new URLSearchParams();
+        params.set(nameField+'_like', term);
+        let a = this.http
+              .get(this.searchUrl, { search: params })
+              .map(response => response.json())
+        return a;    
+    }
 
 }
