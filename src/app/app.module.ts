@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { LOG_LOGGER_PROVIDERS } from "angular2-logger/core";
+
 import { DataTableModule,SharedModule, 
          AutoCompleteModule,ButtonModule,
          DataListModule, DialogModule,
@@ -16,6 +18,7 @@ import { TableEntityComponent } from './components/table-entity/table-entity.com
 import { AppService } from './services/app.service';
 import { AutoFocusDirective } from './auto-focus.directive';
 import { AgentSelectorComponent } from './components/agent-selector/agent-selector.component';
+import { DocNoDateComponent } from './components/doc-no-date/doc-no-date.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { AgentSelectorComponent } from './components/agent-selector/agent-select
     AutoFocusDirective,
     MainFormComponent,
     TableEntityComponent,
-    AgentSelectorComponent
+    AgentSelectorComponent,
+    DocNoDateComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { AgentSelectorComponent } from './components/agent-selector/agent-select
     InputTextModule, DropdownModule, RadioButtonModule,
     CheckboxModule
   ],
-  providers: [AppService],
+  providers: [AppService, LOG_LOGGER_PROVIDERS],
   bootstrap: [MainFormComponent]
 })
 export class AppModule { }

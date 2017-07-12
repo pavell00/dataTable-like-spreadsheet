@@ -1,10 +1,10 @@
 <h3>
   {{title}}
 </h3>
-<div>
+<div (window:keypress)="dialog.onOpenDlg($event, val.value, selectedType)">
     <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
     <input type="text" name="searchEntity" #val pInputText (value)="myValue" myAutofocus
-    (window:keypress)="dialog.onOpenDlg($event, val.value, selectedType)" maxlength=15/>
+        maxlength=15/>
 </div>
 <p-dataTable [value]="entities"  [editable]="true"
         [(selection)]="selectedRow"
@@ -28,13 +28,13 @@
                 <p-radioButton name="groupname" (onClick)="onRowEdit(ri, rd)" ></p-radioButton>
             </ng-template>
         </p-column>
-        <p-column header="No">
+        <p-column header="№">
             <ng-template let-ri="rowIndex" pTemplate="item">{{ri+1}}</ng-template>
         </p-column> 
         <p-column field="ent_id" header="ID"></p-column>
-        <p-column field="ent_nom" header="Nom №"></p-column> 
-        <p-column field="ent_name" header="NAME Entity"></p-column>
-        <p-column field="" header="age"  [editable]="true"></p-column>         
+        <p-column field="ent_nom" header="Ном. №"></p-column> 
+        <p-column field="ent_name" header="Название объекта учета"></p-column>
+        <p-column field="" header="Кол-во"  [editable]="true"></p-column>         
 </p-dataTable>
 
 <search-entity-dlg #dialog (myEvent)="onGetItem($event)"></search-entity-dlg>

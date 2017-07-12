@@ -12,26 +12,27 @@ import {Agents} from '../model/agent';
 @Injectable()
 export class AppService {
 
-    searchUrl: string = 'http://localhost:3004/entities';
+    searchUrlEntity: string = 'http://localhost:3004/entities';
+    searchUrlAgent: string = 'http://localhost:3004/agents';
 
     constructor(private http: Http) { }
     
     searchEntity (term: string, nameField: string): Observable<Entities[]> {
-        console.log('searchEntity', term, nameField);
+        //console.log('searchEntity', term, nameField);
         let params = new URLSearchParams();
         params.set(nameField+'_like', term);
         let a = this.http
-              .get(this.searchUrl, { search: params })
+              .get(this.searchUrlEntity, { search: params })
               .map(response => response.json())
         return a;
     }
 
     searchAgent (term: string, nameField: string): Observable<Agents[]> {
-        console.log('searchAgent', term, nameField);
+        //console.log('searchAgent', term, nameField);
         let params = new URLSearchParams();
         params.set(nameField+'_like', term);
         let a = this.http
-              .get(this.searchUrl, { search: params })
+              .get(this.searchUrlAgent, { search: params })
               .map(response => response.json())
         return a;    
     }
