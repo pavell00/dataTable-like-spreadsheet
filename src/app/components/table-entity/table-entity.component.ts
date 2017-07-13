@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Entities } from '../../model/entities';
-import { AppService } from '../../services/app.service';
 import { SelectItem } from 'primeng/primeng';
 
 @Component({
@@ -17,7 +16,7 @@ export class TableEntityComponent implements OnInit{
   myValue: any = '';
   selectedRowNo: number = -1;
 
-  constructor(private appService: AppService) {
+  constructor() {
     this.types = [];
     this.types.push({label:'Имя ОУ', value:'ent_name'});
     this.types.push({label:'Nom №', value:'ent_nom'});

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { LOG_LOGGER_PROVIDERS } from "angular2-logger/core";
+import { Logger } from "angular2-logger/core";
 
 import { DataTableModule,SharedModule, 
          AutoCompleteModule,ButtonModule,
@@ -40,7 +40,7 @@ import { DocNoDateComponent } from './components/doc-no-date/doc-no-date.compone
     InputTextModule, DropdownModule, RadioButtonModule,
     CheckboxModule
   ],
-  providers: [AppService, LOG_LOGGER_PROVIDERS],
+  providers: [AppService, Logger],
   bootstrap: [MainFormComponent]
 })
 export class AppModule { }

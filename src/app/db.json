@@ -567,5 +567,16 @@
     }, {
       "ag_id": 129,
       "ag_name": "Производство"
+  }],
+  "pricelists": [{
+    "prl_id": "1",
+    "prl_name": "Оптовый",
+      "prices":[ {"prc_id":1, "prc_name":"Без НДС"},
+                 {"prc_id":21, "prc_name":"С НДС"}]
+    }, { 
+    "prl_id": "2",
+    "prl_name": "Кольцо 1",
+      "prices":[ {"prc_id":1, "prc_name":"Без НДС"},
+                 {"prc_id":3, "prc_name":"Филиал 1"}]
   }]
 }

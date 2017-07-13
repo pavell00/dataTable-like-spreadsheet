@@ -1,15 +1,7 @@
-<div class="ui-g">
-      <div class="ui-g-4">
-        <h2>{{docName}}</h2>
-      </div>
-    <div class="ui-g-2">
-          <input name="docNo" type="text" [(ngModel)]="docNo" 
+<div class="head">
+      <h2 style="margin:0em">{{docName}}</h2>
+      <input name="docNo" type="text" [(ngModel)]="docNo" 
             pInputText placeholder='Номер документа' size=15/>
-    </div>
-    <div class="ui-g-2">
-          <input name="docNo" type="datetime-local" pInputText [(ngModel)]="docDate"/>
-    </div>
-    <div class="ui-g-4">
-          <p>test</p>
-    </div>
+      <input name="docNo" type="datetime-local" pInputText [(ngModel)]="docDate"/>
+      <p-dropdown [options]="items" ></p-dropdown>
 </div>
