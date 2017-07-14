@@ -1,23 +1,11 @@
-<div class="ui-g" (window:keypress)="onInputSearchTermAgent($event)">
-    <div class="ui-g-2">
-        <p>Корреспондент Кому:</p>
-    </div>
-    <div class="ui-g-3">
-      <input name="searchAgentTo" type="search" [(ngModel)]="AgToName" 
-            #at (input)="clearSearch(at.value, 'searchAgentTo')"
-            pInputText placeholder='Укажите корреспондента Кому' size=35/>
-    </div>
+<div (window:keypress)="onInputSearchTermBinder($event)">
+      <p>Подшивка:</p>
+      <input name="searchBinder" type="search" [(ngModel)]="BinderName"
+            #bn (input)="clearSearch(bn.value)"
+            pInputText placeholder='Укажите подшивку' size=15/>
+      <p>Находится в подшивках:</p><span>{{inBinders}}</span>
 </div>
-<div class="ui-g">
-    <div class="ui-g-2">
-        <p>Корреспондент Кто:</p>
-    </div>
-    <div class="ui-g-3">
-        <input name="searchAgentFrom" type="search" [(ngModel)]="AgFromName" 
-            #af (input)="clearSearch(af.value, 'searchAgentFrom')"
-            pInputText placeholder='Укажите корреспондента Кто' size=35/>
-    </div>
-</div>
+
 <p-dialog header="Результат поиска" [(visible)]="displayDialog" modal="true">
     <div class="ui-dialog-content"  style="height: 30%; width: 50em;">
         <div class="scrollingtable">

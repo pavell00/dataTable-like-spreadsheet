@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectItem } from 'primeng/primeng';
-import { PriceLists } from '../../model/priceLists';
-import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'doc-no-date',
@@ -11,12 +8,10 @@ import { AppService } from '../../services/app.service';
 export class DocNoDateComponent implements OnInit {
 
   private docNo: string = 'б/н';
-  private docName: string = 'накладная';
+  private docName: string = 'накладная №';
   private docDate: string;
-  private items: PriceLists[] = [];
-  private selectedItem: string;
 
-  constructor(private appService: AppService) { }
+  constructor() { }
 
   ngOnInit() {
     let d = new Date();
@@ -24,24 +19,16 @@ export class DocNoDateComponent implements OnInit {
     let DayNo: string = d.getDate().toString();
     if (d.getDate() < 10) DayNo = '0' + d.getDate().toString();
     let MontNo: string = d.getMonth().toString();
-    if (d.getMonth() < 9) MontNo = '0' + d.getMonth().toString();
+    if (d.getMonth() < 10) MontNo = '0' + d.getMonth().toString();
+    let HoursNo: string = d.getHours().toString();
+    if (d.getHours() < 10) HoursNo = '0' + d.getHours().toString();
+    let MinutesNo: string =  d.getMinutes().toString()+':00';
+    if (d.getMinutes() < 10) MinutesNo = '0'+d.getMinutes().toString()+':00';
     s = d.getFullYear().toString();
-    s = s +'-' + MontNo;
-    s = s +'-' + DayNo + 'T';
-    s = s + d.getHours().toString()+':';
-    s = s + d.getMinutes().toString()+':';
-    s = s + d.getSeconds().toString();
+    s = s +'-'+MontNo+'-'+DayNo+'T'+HoursNo+':'+MinutesNo;
     //console.log(s);
     this.docDate = s;
-    this.getPeceListDropDown();
-  }
 
-  getPeceListDropDown(){
-    this.appService.getPriceLists().subscribe(
-        (v) => {this.items = v},
-        (error) => (console.log(error)),
-        () => true
-    )
   }
 
 }

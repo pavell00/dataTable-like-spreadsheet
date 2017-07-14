@@ -19,6 +19,8 @@ import { AppService } from './services/app.service';
 import { AutoFocusDirective } from './auto-focus.directive';
 import { AgentSelectorComponent } from './components/agent-selector/agent-selector.component';
 import { DocNoDateComponent } from './components/doc-no-date/doc-no-date.component';
+import { PriceListComponent } from './components/price-list/price-list.component';
+import { BinderSelectorComponent } from './components/binder-selector/binder-selector.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DocNoDateComponent } from './components/doc-no-date/doc-no-date.compone
     MainFormComponent,
     TableEntityComponent,
     AgentSelectorComponent,
-    DocNoDateComponent
+    DocNoDateComponent,
+    PriceListComponent,
+    BinderSelectorComponent
   ],
   imports: [
     BrowserModule,

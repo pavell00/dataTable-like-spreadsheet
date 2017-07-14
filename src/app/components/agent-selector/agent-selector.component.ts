@@ -41,7 +41,7 @@ export class AgentSelectorComponent implements OnInit {
     } //this._logger.info('handler search!')
   }
 
-  onInputSearchTerm(e: any) {
+  onInputSearchTermAgent(e: any) {
     if (e.key === 'Enter') {
       if (e.target.name === 'searchAgentTo') {
         //console.log(e.target.name, this.AgToName);
