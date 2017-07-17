@@ -80,8 +80,8 @@ export class AgentSelectorComponent implements OnInit {
   }
 
   keydown(e: any){
-    //console.log(e.key)
-/*    switch (e.key) {
+  /*  //console.log(e.key)
+    switch (e.key) {
       case 'ArrowUp':
         if (this.index > 0) {
           this.index--

@@ -9,6 +9,7 @@ import {Subject} from 'rxjs/Subject';
 import {Entities} from '../model/entities';
 import {Agents} from '../model/agent';
 import {PriceLists, Price} from '../model/priceLists';
+import {Binders} from '../model/binder';
 
 @Injectable()
 export class AppService {
@@ -16,6 +17,7 @@ export class AppService {
     searchUrlEntity: string = 'http://localhost:3004/entities';
     searchUrlAgent: string = 'http://localhost:3004/agents';
     gethUrlPriceLists: string = 'http://localhost:3004/pricelists';
+    searchUrlBinder: string = 'http://localhost:3004/binders';
 
     constructor(private http: Http) { }
     
@@ -43,4 +45,12 @@ export class AppService {
               .map(response => response.json())
     }
 
+    searchBinder (term: string, nameField: string): Observable<Binders[]> {
+    //console.log('searchAgent', term, nameField);
+    let params = new URLSearchParams();
+    params.set(nameField+'_like', term);
+    return this.http
+            .get(this.searchUrlBinder, { search: params })
+            .map(response => response.json())
+}
 }

@@ -1,9 +1,12 @@
-<div (window:keypress)="onInputSearchTermBinder($event)">
-      <p>Подшивка:</p>
-      <input name="searchBinder" type="search" [(ngModel)]="BinderName"
-            #bn (input)="clearSearch(bn.value)"
-            pInputText placeholder='Укажите подшивку' size=15/>
-      <p>Находится в подшивках:</p><span>{{inBinders}}</span>
+<div class="binder" (window:keypress)="onInputSearchTermBinder($event)">
+        <p>Подшивка:</p>
+        <input name="searchBinder" type="search" [(ngModel)]="BinderName"
+                #bn (input)="clearSearch(bn.value)"
+                pInputText placeholder='Укажите подшивку' size=17/>
+        <p>Находится в подшивках:</p>
+            <ul>
+                <li *ngFor="let bind of linkBinders" style="display:inline;">{{bind}}; </li>
+            </ul>
 </div>
 
 <p-dialog header="Результат поиска" [(visible)]="displayDialog" modal="true">
@@ -13,16 +16,15 @@
                 <caption><b>Найденные элементы</b></caption>
                 <thead>
                     <tr>
-                        <th>ID</th><th>№ ИНН</th><th>Наименование корреспондента</th>
+                        <th>ID</th><th>Наименование подшивки</th>
                     </tr>
                 </thead>
                 <tbody (window:keydown)="keydown($event)">
-                    <tr class="items2" *ngFor="let agent of agents; let i=index, let last=last" 
-                            (click)="onSelect(agent, i)"
-                            [class.selected]="agent === selectedAgent">
-                        <td>{{agent.ag_id}}</td>
-                        <td>{{agent.ag_vatno}}</td>
-                        <td>{{agent.ag_name}}</td>
+                    <tr class="items2" *ngFor="let binder of binders; let i=index, let last=last" 
+                            (click)="onSelect(binder, i)"
+                            [class.selected]="binder === selectedBinder">
+                        <td>{{binder.bind_id}}</td>
+                        <td>{{binder.bind_name}}</td>
                     </tr>
                 </tbody>
             </table>            
@@ -31,8 +33,7 @@
     <p-footer>
         <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
             <button type="button" pButton icon="fa-close" (click)="onClickNo()" label="No"></button>
-            <button type="button" pButton icon="fa-check" 
-                (click)="displayDialog=false" label="Yes" (click)="onClickOk()">
+            <button type="button" pButton icon="fa-check" label="Yes" (click)="onClickOk()">
             </button>
         </div>
     </p-footer>

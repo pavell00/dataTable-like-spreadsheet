@@ -10,7 +10,8 @@ import { DataTableModule,SharedModule,
          AutoCompleteModule,ButtonModule,
          DataListModule, DialogModule,
          InputTextModule, DropdownModule,
-         RadioButtonModule, CheckboxModule} from 'primeng/primeng';
+         RadioButtonModule, CheckboxModule,
+         MenubarModule} from 'primeng/primeng';
 
 import { MainFormComponent } from './components/main-form/main-form.component';
 import { SearchEntityComponent } from './components/search-entity-dlg/search-entity-dlg.component';
@@ -42,7 +43,7 @@ import { BinderSelectorComponent } from './components/binder-selector/binder-sel
     DataTableModule, SharedModule, AutoCompleteModule,
     ButtonModule, DataListModule, DialogModule,
     InputTextModule, DropdownModule, RadioButtonModule,
-    CheckboxModule
+    CheckboxModule, MenubarModule
   ],
   providers: [AppService, Logger],
   bootstrap: [MainFormComponent]

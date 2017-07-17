@@ -456,9 +456,9 @@
       "ent_name": "профнастил Н57 оцинков."
   }],
   "agents": [{
-      "ag_id": 1,
-      "ag_vatno": "<Код плат. НДС>",
-      "ag_name": "Столовая"
+    "ag_id": 1,
+    "ag_vatno": "<Код плат. НДС>",
+    "ag_name": "Столовая"
     }, {
       "ag_id": 102,
       "ag_name": "Поставщики"
@@ -567,16 +567,220 @@
     }, {
       "ag_id": 129,
       "ag_name": "Производство"
-  }],
+    }],
   "pricelists": [{
-    "prl_id": "1",
-    "prl_name": "Оптовый",
-      "prices":[ {"prc_id":1, "prc_name":"Без НДС"},
-                 {"prc_id":21, "prc_name":"С НДС"}]
-    }, { 
-    "prl_id": "2",
-    "prl_name": "Кольцо 1",
-      "prices":[ {"prc_id":1, "prc_name":"Без НДС"},
-                 {"prc_id":3, "prc_name":"Филиал 1"}]
+      "prl_id": "1",
+      "prl_name": "Оптовый",
+      "prices": [{
+          "prc_id": 1,
+          "prc_name": "Без НДС"
+        },
+        {
+          "prc_id": 21,
+          "prc_name": "С НДС"
+        }
+      ]
+    }, {
+      "prl_id": "2",
+      "prl_name": "Кольцо 1",
+      "prices": [{
+          "prc_id": 1,
+          "prc_name": "Без НДС"
+        },
+        {
+          "prc_id": 3,
+          "prc_name": "Филиал 1"
+        }
+      ]
+  }],
+  "binders": [{
+      "bind_id": 1,
+      "bind_name": "Водители кольцевики"
+    }, {
+      "bind_id": 227,
+      "bind_name": "382  расчёты с подотчётными лицами за ГСМ"
+    }, {
+      "bind_id": 228,
+      "bind_name": "Договоры с поставщиками ТМЦ"
+    }, {
+      "bind_id": 218,
+      "bind_name": "Логвин"
+    }, {
+      "bind_id": 5,
+      "bind_name": "Водители молоковозов"
+    }, {
+      "bind_id": 6,
+      "bind_name": "Возвраты молпрод"
+    }, {
+      "bind_id": 232,
+      "bind_name": "Экспорт ДГМЗ"
+    }, {
+      "bind_id": 219,
+      "bind_name": "Плескач "
+    }, {
+      "bind_id": 9,
+      "bind_name": "Договоры -импорт-экспорт"
+    }, {
+      "bind_id": 233,
+      "bind_name": "Экспорт в НБ"
+    }, {
+      "bind_id": 245,
+      "bind_name": "Мацюк В.П."
+    }, {
+      "bind_id": 13,
+      "bind_name": "Возврат ГП"
+    }, {
+      "bind_id": 335,
+      "bind_name": "Ткаченко Д.В."
+    }, {
+      "bind_id": 40,
+      "bind_name": "Пуляев К.И."
+    }, {
+      "bind_id": 16,
+      "bind_name": "Сидяченко А.И."
+    }, {
+      "bind_id": 17,
+      "bind_name": "Омельченко"
+    }, {
+      "bind_id": 18,
+      "bind_name": "631 Приход молсырья c НДС (хоз-ва)"
+    }, {
+      "bind_id": 19,
+      "bind_name": "Расчеты за материалы"
+    }, {
+      "bind_id": 20,
+      "bind_name": "63"
+    }, {
+      "bind_id": 21,
+      "bind_name": "Расчеты за услуги"
+    }, {
+      "bind_id": 246,
+      "bind_name": "хранение-сухое молоко"
+    }, {
+      "bind_id": 197,
+      "bind_name": "Бутков"
+    }, {
+      "bind_id": 247,
+      "bind_name": "хранение-тара"
+    }, {
+      "bind_id": 26,
+      "bind_name": "36"
+    }, {
+      "bind_id": 27,
+      "bind_name": "Расчеты за реализован. мол.прод."
+    }, {
+      "bind_id": 28,
+      "bind_name": "Расчеты за реализ. прочие материалы"
+    }, {
+      "bind_id": 41,
+      "bind_name": "Головин В.Б."
+    }, {
+      "bind_id": 42,
+      "bind_name": "Ландарь"
+    }, {
+      "bind_id": 43,
+      "bind_name": "Чепижко"
+    }, {
+      "bind_id": 44,
+      "bind_name": "Самоздра"
+    }, {
+      "bind_id": 45,
+      "bind_name": "Напханюк В.Н."
+    }, {
+      "bind_id": 46,
+      "bind_name": "Мирненко"
+    }, {
+      "bind_id": 47,
+      "bind_name": "Смолин"
+    }, {
+      "bind_id": 48,
+      "bind_name": "Мандрыка"
+    }, {
+      "bind_id": 49,
+      "bind_name": "Шитиков"
+    }, {
+      "bind_id": 50,
+      "bind_name": "Яблуновский А.А."
+    }, {
+      "bind_id": 51,
+      "bind_name": "Ильинов"
+    }, {
+      "bind_id": 52,
+      "bind_name": "Тарасенко"
+    }, {
+      "bind_id": 53,
+      "bind_name": "Витязь"
+    }, {
+      "bind_id": 54,
+      "bind_name": "Балбеков"
+    }, {
+      "bind_id": 55,
+      "bind_name": "Корниенко"
+    }, {
+      "bind_id": 56,
+      "bind_name": "Стрюков"
+    }, {
+      "bind_id": 57,
+      "bind_name": "Семикин А.А."
+    }, {
+      "bind_id": 58,
+      "bind_name": "Дворянчиков В.А."
+    }, {
+      "bind_id": 59,
+      "bind_name": "Чижденко П.В."
+    }, {
+      "bind_id": 60,
+      "bind_name": "Фарафонов"
+    }, {
+      "bind_id": 181,
+      "bind_name": "Калиманов"
+    }, {
+      "bind_id": 62,
+      "bind_name": "Клызуб"
+    }, {
+      "bind_id": 63,
+      "bind_name": "Эксер"
+    }, {
+      "bind_id": 64,
+      "bind_name": "Прилепов"
+    }, {
+      "bind_id": 184,
+      "bind_name": "Смоляков"
+    }, {
+      "bind_id": 66,
+      "bind_name": "Ченчик"
+    }, {
+      "bind_id": 67,
+      "bind_name": "Попович"
+    }, {
+      "bind_id": 68,
+      "bind_name": "Мячиков С.Н."
+    }, {
+      "bind_id": 69,
+      "bind_name": "Уманец"
+    }, {
+      "bind_id": 70,
+      "bind_name": "Савченко"
+    }, {
+      "bind_id": 72,
+      "bind_name": "Рыбальский Г."
+    }, {
+      "bind_id": 73,
+      "bind_name": "Мельничук"
+    }, {
+      "bind_id": 74,
+      "bind_name": "Дроботя"
+    }, {
+      "bind_id": 75,
+      "bind_name": "Хохлов А.А."
+    }, {
+      "bind_id": 76,
+      "bind_name": "Хоменков Н."
+    }, {
+      "bind_id": 77,
+      "bind_name": "Федоров"
+    }, {
+      "bind_id": 78,
+      "bind_name": "Сабакарь"
   }]
 }
