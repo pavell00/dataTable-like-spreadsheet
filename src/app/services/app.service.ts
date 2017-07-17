@@ -46,11 +46,11 @@ export class AppService {
     }
 
     searchBinder (term: string, nameField: string): Observable<Binders[]> {
-    //console.log('searchAgent', term, nameField);
-    let params = new URLSearchParams();
-    params.set(nameField+'_like', term);
-    return this.http
-            .get(this.searchUrlBinder, { search: params })
-            .map(response => response.json())
-}
+        //console.log('searchAgent', term, nameField);
+        let params = new URLSearchParams();
+        params.set(nameField+'_like', term);
+        return this.http
+                .get(this.searchUrlBinder, { search: params })
+                .map(response => response.json())
+    }
 }

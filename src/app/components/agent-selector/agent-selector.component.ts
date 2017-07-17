@@ -126,11 +126,24 @@ export class AgentSelectorComponent implements OnInit {
   onClickNo(){
     this.index = 0;
     this.displayDialog = false
-    if (this.currentTrgAgName === 'searchAgentTo' && this.AgTo.ag_id != undefined){
-      this.AgToName = this.AgTo.ag_name;
-    }
-    if (this.currentTrgAgName === 'searchAgentFrom' && this.AgFrom.ag_id != undefined){
-      this.AgFromName = this.AgFrom.ag_name;
+    switch (this.currentTrgAgName) {
+      case 'searchAgentTo':
+        if (this.AgTo != undefined)
+          {
+            this.AgToName = this.AgTo.ag_name
+          } else {
+             this.AgToName = '';
+          }
+        break;
+      case 'searchAgentFrom':
+        if (this.AgFrom != undefined) {
+          this.AgFromName = this.AgFrom.ag_name;
+        } else {
+          this.AgFromName = '';
+        }
+        break;
+      default:
+        break;
     }
   }
 
