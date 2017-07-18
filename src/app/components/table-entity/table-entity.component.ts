@@ -67,7 +67,7 @@ export class TableEntityComponent implements OnInit{
   }
 
   deleteRow(e: any, ri:any){
-    console.log(ri);
+    //console.log(ri);
     //let index = this.entities.indexOf(ri);
     //console.log(this.entities.length);
     this.entities = this.entities.filter((val, i) => i!=ri);
@@ -78,9 +78,9 @@ export class TableEntityComponent implements OnInit{
   addRow(){
     let entity = [...this.entities];
     let b = new Entities();
-/*    b.firstName = "Tommy";
-    b.lastName = "lie";
-    b.age = 50;*/
+    /* b.firstName = "Tommy";
+      b.lastName = "lie";
+      b.age = 50;*/
     entity.push(b);
     this.entities = entity;
   }
@@ -102,14 +102,9 @@ export class TableEntityComponent implements OnInit{
   }
 
   onEditComplete(e: any){
-/*  console.log(e.column);
+  /*console.log(e.column);
     console.log(e.data;
     console.log(e.index);*/
-    //console.log(e.data.firstName);
-  }
-
-  searchTerm(e: any, b: any){
-    //console.log(e, b);
   }
 
   onClick(ri: number){

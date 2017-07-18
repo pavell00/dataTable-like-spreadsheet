@@ -22,6 +22,7 @@ import { AgentSelectorComponent } from './components/agent-selector/agent-select
 import { DocNoDateComponent } from './components/doc-no-date/doc-no-date.component';
 import { PriceListComponent } from './components/price-list/price-list.component';
 import { BinderSelectorComponent } from './components/binder-selector/binder-selector.component';
+import { TemplateSelectorComponent } from './components/template-selector/template-selector.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BinderSelectorComponent } from './components/binder-selector/binder-sel
     AgentSelectorComponent,
     DocNoDateComponent,
     PriceListComponent,
-    BinderSelectorComponent
+    BinderSelectorComponent,
+    TemplateSelectorComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import {Entities} from '../model/entities';
 import {Agents} from '../model/agent';
 import {PriceLists, Price} from '../model/priceLists';
 import {Binders} from '../model/binder';
+import {Templates} from '../model/template';
 
 @Injectable()
 export class AppService {
@@ -18,6 +19,7 @@ export class AppService {
     searchUrlAgent: string = 'http://localhost:3004/agents';
     gethUrlPriceLists: string = 'http://localhost:3004/pricelists';
     searchUrlBinder: string = 'http://localhost:3004/binders';
+    searchUrlTemplate: string = 'http://localhost:3004/templates';
 
     constructor(private http: Http) { }
     
@@ -51,6 +53,15 @@ export class AppService {
         params.set(nameField+'_like', term);
         return this.http
                 .get(this.searchUrlBinder, { search: params })
+                .map(response => response.json())
+    }
+
+    searchTemplate (term: string, nameField: string): Observable<Templates[]> {
+        //console.log('searchTemplate', term, nameField);
+        let params = new URLSearchParams();
+        params.set(nameField, term);
+        return this.http
+                .get(this.searchUrlTemplate, { search: params })
                 .map(response => response.json())
     }
 }

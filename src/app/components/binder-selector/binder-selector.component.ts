@@ -10,7 +10,8 @@ import { Logger } from "angular2-logger/core";
 })
 export class BinderSelectorComponent implements OnInit {
 
-  private displayDialog: boolean;
+  private displayDialogAddBinders: boolean;
+  private displayDialogDelBinders: boolean;
   private linkBinders: string[] =
       ['Расчеты за материалы', 'Бутков', 'Напханюк В.Н.'];//refactor to add object Binders type
   private BinderName: string;
@@ -25,8 +26,7 @@ export class BinderSelectorComponent implements OnInit {
   constructor(private appService: AppService,
               private _logger: Logger) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   onInputSearchTermBinder(e: any) {
     if (e.key === 'Enter') {
@@ -36,7 +36,7 @@ export class BinderSelectorComponent implements OnInit {
         this.currentTrgBindName = e.target.name;
         if(this.BinderName !== undefined && this.BinderName !== '' && this.BinderName.length >= 2){
           this.searchBinder(this.BinderName, 'bind_name');
-          this.displayDialog = true;
+          this.displayDialogAddBinders = true;
         }
       }
     }
@@ -44,7 +44,7 @@ export class BinderSelectorComponent implements OnInit {
 
   addBinders(){
     this.searchBinder('', 'bind_name');
-    this.displayDialog = true;
+    this.displayDialogAddBinders = true;
   }
 
   searchBinder(term :string, nameField:string) {
@@ -67,13 +67,13 @@ export class BinderSelectorComponent implements OnInit {
       this.linkBinders.push(this.selectedBinder.bind_name);//refactor to add object Binders type
       this.BinderName = '';
    // }
-    this.displayDialog = false
+    this.displayDialogAddBinders = false
     console.log(JSON.stringify(this.linkBinders));
   }
 
   onClickNo(){
     this.index = 0;
-    this.displayDialog = false
+    this.displayDialogAddBinders = false
   }
 
   clearSearch(e: string, a: string){
@@ -118,4 +118,15 @@ export class BinderSelectorComponent implements OnInit {
       }*/
   }
 
+  onClickCloseDelBinders(){
+    this.displayDialogDelBinders = false;
+  }
+
+  ShowDialogDelBinder(){
+    this.displayDialogDelBinders = true;
+  }
+
+  removeBinder(ri: number){
+    this.linkBinders = this.linkBinders.filter((val, i) => i!=ri);
+  }
 }
